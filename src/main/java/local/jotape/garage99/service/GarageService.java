@@ -22,6 +22,15 @@ public class GarageService {
         return result;
     }
     
+    /**
+     * retorna veiculos filtrados por id
+     * @param id
+     * @return
+     */
+    public List<Veiculos> findById(long id){
+        List<Veiculos> result = garageRepository.findById(id);
+        return result;
+    }
     
     /**
      * retorna veiculos filtrados por cor

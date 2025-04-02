@@ -31,6 +31,26 @@ public class GarageController {
     }
     
     
+    
+    /**
+     * Endpoint /Forsale/id
+     * Retorna o veiculo do respectivo id
+     * @param id
+     *@return
+     */
+    @GetMapping("/forsale/id")
+    public ResponseEntity<List<Veiculos>> findById(@PathVariable long id) {
+        List<Veiculos> result = garageService.findById(id);
+        
+        if(result.isEmpty()) {
+            return ResponseEntity.notFound().build();
+            
+        }else{
+            return ResponseEntity.ok(result);
+        }
+    }
+    
+    
     /**
      * EndPoint /veiculos/cor/{cor}
      * @param cor
@@ -49,6 +69,11 @@ public class GarageController {
 
     }
     
+    /**
+     * EndPoint /veiculos/ano/{ano}
+     * @param ano
+     * @return 
+     */
     @GetMapping("/year/{ano}")
     public ResponseEntity<List<Veiculos>> findByAnoIgnoreCase(@PathVariable int ano) {
         List<Veiculos> result = garageService.findByAno(ano);
