@@ -32,4 +32,15 @@ public class GarageService {
         List<Veiculos> result = garageRepository.findByCorIgnoreCase(cor);
         return result;
     }
+    
+    
+    /**
+     * retorna veiculos filtrados por ano
+     * @param ano
+     * @return
+     */
+    public List<Veiculos> findByAno(int ano){
+        List<Veiculos> result = garageRepository.findByAno(ano);
+        return result;
+    }
 }

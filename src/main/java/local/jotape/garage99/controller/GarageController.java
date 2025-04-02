@@ -24,7 +24,7 @@ public class GarageController {
      * Retorna TODOS os veículos 
      * @Return
      */
-    @GetMapping("/veiculos")
+    @GetMapping("/forsale")
     public List<Veiculos> findAll() {
         List<Veiculos> result = garageService.findAll();
         return result;
@@ -36,7 +36,7 @@ public class GarageController {
      * @param cor
      * @return
      */
-    @GetMapping("/veiculos/{cor}")
+    @GetMapping("/color/{cor}")
     public ResponseEntity<List<Veiculos>> findByCorIgnoreCose(@PathVariable String cor) {
         List<Veiculos> result = garageService.findByCor(cor);
         
@@ -47,5 +47,17 @@ public class GarageController {
             return ResponseEntity.ok(result);
         }
 
+    }
+    
+    @GetMapping("/year/{ano}")
+    public ResponseEntity<List<Veiculos>> findByAnoIgnoreCase(@PathVariable int ano) {
+        List<Veiculos> result = garageService.findByAno(ano);
+        
+        if(result.isEmpty()) {
+            return ResponseEntity.notFound().build();
+            
+        }else{
+            return ResponseEntity.ok(result);
+        }
     }
 }
