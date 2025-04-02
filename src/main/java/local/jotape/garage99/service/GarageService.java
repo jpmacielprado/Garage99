@@ -22,4 +22,14 @@ public class GarageService {
         return result;
     }
     
+    
+    /**
+     * retorna veiculos filtrados por cor
+     * @param cor
+     * @return
+     */
+    public List<Veiculos> findByCor(String cor){
+        List<Veiculos> result = garageRepository.findByCorIgnoreCase(cor);
+        return result;
+    }
 }
