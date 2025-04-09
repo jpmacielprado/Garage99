@@ -38,7 +38,7 @@ public class GarageController {
      * @param id
      *@return
      */
-    @GetMapping("/forsale/id")
+    @GetMapping("/forsale/{id}")
     public ResponseEntity<List<Veiculos>> findById(@PathVariable long id) {
         List<Veiculos> result = garageService.findById(id);
         
