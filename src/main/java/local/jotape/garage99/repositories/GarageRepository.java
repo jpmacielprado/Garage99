@@ -5,18 +5,18 @@
 package local.jotape.garage99.repositories;
 
 import java.util.List;
-import local.jotape.garage99.entities.Veiculos;
+import local.jotape.garage99.entities.Veiculo;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author sesideva
  */
-public interface GarageRepository  extends JpaRepository<Veiculos, Long> {
+public interface GarageRepository  extends JpaRepository<Veiculo, Long> {
     
-    List<Veiculos> findById(long id);
-    List<Veiculos> findByCorIgnoreCase(String cor);
-    List<Veiculos> findByAno(int ano);
+    List<Veiculo> findById(long id);
+    List<Veiculo> findByCorIgnoreCase(String cor);
+    List<Veiculo> findByAno(int ano);
 }
     
 

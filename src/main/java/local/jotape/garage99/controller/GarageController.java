@@ -2,7 +2,7 @@ package local.jotape.garage99.controller;
 
 import java.util.List;
 import local.jotape.garage.DTO.VeiculoDTO;
-import local.jotape.garage99.entities.Veiculos;
+import local.jotape.garage99.entities.Veiculo;
 import local.jotape.garage99.service.GarageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +21,7 @@ public class GarageController {
     private GarageService garageService;
     
     /**
-     * Endpoint /Garage/veiculos
+     * Endpoint /Garage/forsale
      * Retorna TODOS os veículos 
      * @Return
      */
@@ -40,8 +40,8 @@ public class GarageController {
      *@return
      */
     @GetMapping("/forsale/{id}")
-    public ResponseEntity<List<Veiculos>> findById(@PathVariable long id) {
-        List<Veiculos> result = garageService.findById(id);
+    public ResponseEntity<List<Veiculo>> findById(@PathVariable long id) {
+        List<Veiculo> result = garageService.findById(id);
         
         if(result.isEmpty()) {
             return ResponseEntity.notFound().build();

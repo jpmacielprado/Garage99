@@ -4,7 +4,7 @@
  */
 package local.jotape.garage.DTO;
 
-import local.jotape.garage99.entities.Veiculos;
+import local.jotape.garage99.entities.Veiculo;
 
 /**
  *
@@ -20,10 +20,10 @@ public class VeiculoDTO {
     private double km;
     private String linkimagem;
 
-    public VeiculoDTO(Veiculos x) {
+    
+    public VeiculoDTO() {
     }
-    
-    
+
     public VeiculoDTO(long id, String marca, String modelo, String cor, int ano, double km, String linkimagem) {
         this.id = id;
         this.marca = marca;
@@ -33,7 +33,18 @@ public class VeiculoDTO {
         this.km = km;
         this.linkimagem = linkimagem;
     }
-
+    
+     public VeiculoDTO(Veiculo veic) {
+        this.id = veic.getId();
+        this.marca = veic.getMarca();
+        this.modelo = veic.getModelo();
+        this.cor = veic.getCor();
+        this.ano = veic.getAno();
+        this.km = veic.getKm();
+        this.linkimagem = veic.getLinkimagem();
+    }
+    
+    
     public long getId() {
         return id;
     }
@@ -61,7 +72,7 @@ public class VeiculoDTO {
     public String getLinkimagem() {
         return linkimagem;
     }
-    
-    
-    
+
+       
+       
 }
