@@ -2,6 +2,8 @@
 package local.jotape.garage99.service;
 
 import java.util.List;
+import static java.util.stream.Collectors.toList;
+import local.jotape.garage.DTO.VeiculoDTO;
 import local.jotape.garage99.entities.Veiculos;
 import local.jotape.garage99.repositories.GarageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +18,16 @@ public class GarageService {
     @Autowired
     private GarageRepository garageRepository;
     
-    public List<Veiculos> findAll() {
+    
+    public List<VeiculoDTO> findAll() {    
+        List<Veiculos> resultGarage = garageRepository.findAll();
         
-        List<Veiculos> result = garageRepository.findAll();
-        return result;
+        List<VeiculoDTO> resultDTO = resultGarage.stream()
+                .map (x -> new VeiculoDTO(x)).toList();
+                
+        return resultDTO;
     }
+    
     
     /**
      * retorna veiculos filtrados por id
@@ -37,9 +44,13 @@ public class GarageService {
      * @param cor
      * @return
      */
-    public List<Veiculos> findByCor(String cor){
-        List<Veiculos> result = garageRepository.findByCorIgnoreCase(cor);
-        return result;
+    public List<VeiculoDTO> findByCor(String cor){
+        List<Veiculos> resultGarage = garageRepository.findByCorIgnoreCase(cor);
+        
+        List<VeiculoDTO> resultDTO = resultGarage.stream()
+                .map(x -> new VeiculoDTO(x)).toList();
+        
+        return resultDTO;
     }
     
     
@@ -48,8 +59,13 @@ public class GarageService {
      * @param ano
      * @return
      */
-    public List<Veiculos> findByAno(int ano){
-        List<Veiculos> result = garageRepository.findByAno(ano);
-        return result;
+    public List<VeiculoDTO> findByAno(int ano){
+        List<Veiculos> resultGarage = garageRepository.findByAno(ano);
+        
+        List<VeiculoDTO> resultDTO = resultGarage.stream()
+                .map(x -> new VeiculoDTO(x)).toList();
+        
+        return resultDTO;
     }
+    
 }
